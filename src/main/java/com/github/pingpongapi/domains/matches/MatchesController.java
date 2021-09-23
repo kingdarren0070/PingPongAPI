@@ -61,9 +61,8 @@ public class MatchesController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Matches> deleteMatch(@PathVariable Long id) {
+  public void deleteMatch(@PathVariable Long id) {
     logger.info("Delete match request received");
     matchesService.deleteMatch(id);
-    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }

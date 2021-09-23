@@ -160,6 +160,7 @@ public class MatchesServiceImpl implements MatchesService{
         throw new CannotDeleteMatch("Completed Match Cannot Be Deleted");
       }
       matchesRepository.deleteById(id);
+      return;
     } catch (DataAccessException e) {
       logger.error(e.getMessage());
     } catch (ResourceNotFound r) {
