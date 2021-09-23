@@ -20,9 +20,11 @@ public class Matches {
   private String matchType;
 
   @NotNull
+  @ManyToOne
   private Users participant1;
 
   @NotNull
+  @ManyToOne
   private Users participant2;
 
   @NotBlank
@@ -31,6 +33,7 @@ public class Matches {
   @NotBlank
   private String time;
 
+  @OneToOne
   private Users victor;
 
   private int score1;

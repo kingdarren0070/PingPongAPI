@@ -1,7 +1,9 @@
 package com.github.pingpongapi.domains.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.pingpongapi.domains.matches.Matches;
 import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -29,6 +31,9 @@ public class Users {
   private int losses;
 
   private int totalScore;
+
+  @OneToMany
+  private List<Matches> matches;
 
   public Users() {
   }
