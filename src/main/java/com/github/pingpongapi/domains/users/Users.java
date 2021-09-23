@@ -1,6 +1,7 @@
 package com.github.pingpongapi.domains.users;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
@@ -27,17 +28,20 @@ public class Users {
 
   private int losses;
 
+  private int totalScore;
+
   public Users() {
   }
 
   public Users(@NotBlank String name,
-      @NotBlank String username, @NotBlank String password, String salt, int wins, int losses) {
+      @NotBlank String username, @NotBlank String password, String salt, int wins, int losses, int totalScore) {
     this.name = name;
     this.username = username;
     this.password = password;
     this.salt = salt;
     this.wins = wins;
     this.losses = losses;
+    this.totalScore = totalScore;
   }
 
   public Users(@NotBlank String name,
@@ -101,6 +105,26 @@ public class Users {
 
   public void setLosses(int losses) {
     this.losses = losses;
+  }
+
+  public int getTotalScore() {
+    return totalScore;
+  }
+
+  public void setTotalScore(int totalScore) {
+    this.totalScore = totalScore;
+  }
+
+  public void addWin() {
+    this.wins += 1;
+  }
+
+  public void addLoss() {
+    this.losses += 1;
+  }
+
+  public void addScore(int score) {
+    this.totalScore += score;
   }
 
   @Override

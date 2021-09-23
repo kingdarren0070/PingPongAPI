@@ -27,22 +27,21 @@ public class UsersController {
   @Autowired
   private UsersService usersService;
 
-  @GetMapping
-  public ResponseEntity<List<Users>> getAllUsers() {
-    logger.info("Get all users request received");
-    return new ResponseEntity<>(usersService.getAll(), HttpStatus.OK);
-  }
-
   @GetMapping("/{id}")
   public ResponseEntity<Users> getUserById(@PathVariable Long id) {
     logger.info("Get user by id request received");
     return new ResponseEntity<>(usersService.getById(id), HttpStatus.OK);
   }
 
+  @GetMapping("/leader-total-score")
+  public ResponseEntity<List<Users>> getLeaderboardByTotalScore() {
+    logger.info("Get leaderboard by total score request received");
+    return new ResponseEntity<>(usersService.getLeaderboardByTotalScore(), HttpStatus.OK);
+  }
+
   @PostMapping
   public ResponseEntity<Users> createUser(@Valid @RequestBody Users user) throws NoSuchAlgorithmException {
     logger.info("Create new user request received");
-    System.out.println(user);
     return new ResponseEntity<>(usersService.createUser(user), HttpStatus.CREATED);
   }
 

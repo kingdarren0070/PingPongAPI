@@ -8,6 +8,8 @@ public interface UsersService {
 
   Users getById(Long id);
 
+  List<Users> getLeaderboardByTotalScore();
+
   Users createUser(Users user) throws NoSuchAlgorithmException;
 
   Users updateUser(Long id, Users user) throws NoSuchAlgorithmException;
